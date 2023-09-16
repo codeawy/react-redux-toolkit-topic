@@ -1,19 +1,15 @@
-import { useEffect } from "react";
-import { getProductList } from "./app/features/products/productsSlice";
-import { useAppDispatch } from "./app/store";
+import { useGetProductListQuery } from "./app/features/products/productsSlice";
 import ProductCard from "./components/ProductCard";
 import { IProduct } from "./interface";
 
 const ProductList = () => {
-  const dispatch = useAppDispatch();
+  const { isLoading, data } = useGetProductListQuery({});
 
-  useEffect(() => {
-    dispatch(getProductList());
-  }, [dispatch]);
+  if (isLoading) return <h3>Loading...</h3>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 p-2 rounded-md">
-      {[].map((product: IProduct) => (
+      {data.products.map((product: IProduct) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

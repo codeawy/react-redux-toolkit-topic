@@ -36,7 +36,7 @@ const Navbar = () => {
             <NavLink to={"/"} className="text-slate-600 md:mr-12 hover:text-slate-600">
               Features
             </NavLink>
-            <NavLink to={"/"} className="text-slate-600 md:mr-12 hover:text-slate-600">
+            <NavLink to={"/cart"} className="text-slate-600 md:mr-12 hover:text-slate-600">
               Cart({cartItems.length})
             </NavLink>
             <NavLink
